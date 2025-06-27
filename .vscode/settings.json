@@ -1,0 +1,35 @@
+{
+  "workbench.startupEditor": "welcomePage",
+  "security.workspace.trust.enabled": false,
+
+  // Editor
+  "editor.fontFamily": "MonoLisa",
+  "editor.fontSize": 14,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+
+  // Explorer
+  "explorer.sortOrder": "type",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmPasteNative": false,
+  "files.exclude": {
+    "**/.git": false,
+    "**/.svn": false,
+    "**/.hg": false,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": false
+  },
+
+  // Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+
+  // vscode-icons
+  "workbench.iconTheme": "vscode-icons",
+
+  // Telemetry
+  "workbench.enableExperiments": false,
+  "telemetry.feedback.enabled": false,
+  "telemetry.telemetryLevel": "off"
+}
