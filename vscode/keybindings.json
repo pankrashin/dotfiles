@@ -1,0 +1,10 @@
+[
+  {
+    "key": "cmd+p",
+    "command": "workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  }
+]
