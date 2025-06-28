@@ -128,11 +128,36 @@ export PATH
 # Composer Packages
 PATH=“$HOME/.composer/vendor/bin:$PATH”
 
+# Flutter
+export PATH=$HOME/SDKs/flutter/bin:$PATH
+
+# rbenv
+eval "$(rbenv init - --no-rehash zsh)"
+
+# Ruby Gems
+export PATH=$HOME/.gem/bin:$PATH
+
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+
 # Aliases
 alias zshconfig="code ~/.zshrc"
+alias sshconfig="code ~/.ssh/config"
+alias sshknownhosts="code ~/.ssh/known_hosts"
+alias dotfiles="code ~/Developer/dotfiles"
 alias cat="bat"
 alias cddev="cd ~/Developer"
 alias create-venv="python3 -m venv venv"
 alias activate-venv="source venv/bin/activate"
 
-
+alias sethostname='function _sethostname() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: sethostname <new-hostname>"
+    return 1
+  fi
+  NAME="$1"
+  echo "Setting hostname to $NAME (requires sudo)..."
+  sudo scutil --set HostName "$NAME"
+  sudo scutil --set LocalHostName "$NAME"
+  sudo scutil --set ComputerName "$NAME"
+  dscacheutil -flushcache
+}; _sethostname'
