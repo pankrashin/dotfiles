@@ -141,14 +141,15 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 # Aliases
 alias zshconfig="code ~/.zshrc"
+alias vi="nvim"
+alias vim="nvim"
+alias cat="bat"
+alias cddev="cd ~/Developer"
 alias sshconfig="code ~/.ssh/config"
 alias sshknownhosts="code ~/.ssh/known_hosts"
 alias dotfiles="code ~/Developer/dotfiles"
-alias cat="bat"
-alias cddev="cd ~/Developer"
 alias create-venv="python3 -m venv venv"
 alias activate-venv="source venv/bin/activate"
-
 alias sethostname='function _sethostname() {
   if [[ -z "$1" ]]; then
     echo "Usage: sethostname <new-hostname>"

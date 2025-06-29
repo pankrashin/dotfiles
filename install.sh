@@ -43,6 +43,7 @@ brew install rbenv
 brew install go
 
 # System
+brew install nvim
 brew install bat
 brew install fzf
 brew install yazi
