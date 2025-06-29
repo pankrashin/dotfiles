@@ -1,5 +1,7 @@
 {
+  "workbench.colorTheme": "Default Dark Modern",
   "workbench.startupEditor": "welcomePage",
+  "workbench.editor.enablePreview": false,
   "security.workspace.trust.enabled": false,
 
   // Editor
@@ -27,6 +29,20 @@
 
   // vscode-icons
   "workbench.iconTheme": "vscode-icons",
+
+  // Recommended Dart Settings
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+
+  // Terminal
+  "terminal.integrated.fontSize": 14,
+  "terminal.external.osxExec": "Ghostty.app",
 
   // Telemetry
   "workbench.enableExperiments": false,
