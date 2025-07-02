@@ -3,6 +3,8 @@
   "workbench.startupEditor": "welcomePage",
   "workbench.editor.enablePreview": false,
   "security.workspace.trust.enabled": false,
+  "update.mode": "manual",
+  "update.showReleaseNotes": false,
 
   // Editor
   "editor.fontFamily": "MonoLisa",
@@ -23,13 +25,6 @@
     "**/Thumbs.db": false
   },
 
-  // Prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-
-  // vscode-icons
-  "workbench.iconTheme": "vscode-icons",
-
   // Recommended Dart Settings
   "[dart]": {
     "editor.formatOnSave": true,
@@ -47,5 +42,28 @@
   // Telemetry
   "workbench.enableExperiments": false,
   "telemetry.feedback.enabled": false,
-  "telemetry.telemetryLevel": "off"
+  "telemetry.telemetryLevel": "off",
+
+  // vscode-icons
+  "workbench.iconTheme": "vscode-icons",
+  "vsicons.dontShowNewVersionMessage": true,
+
+  // vscode-pets
+  "vscode-pets.petType": "fox",
+  "vscode-pets.petColor": "red",
+
+  // Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+
+  // Extensions:
+  // vscode-icons
+  // vscode-pets
+  // Prettier
+  // Error Lens
+  // Python
+  // Jupiter
+  // Dart
+  // Flutter
+  // Container Tools
 }
