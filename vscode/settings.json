@@ -3,7 +3,9 @@
   "workbench.startupEditor": "welcomePage",
   "workbench.editor.enablePreview": false,
   "security.workspace.trust.enabled": false,
-  "update.mode": "manual",
+
+  // Update
+  "update.mode": "none", // Update via Homebrew
   "update.showReleaseNotes": false,
 
   // Editor
@@ -39,6 +41,9 @@
   "terminal.integrated.fontSize": 14,
   "terminal.external.osxExec": "Ghostty.app",
 
+  // Git
+  "git.confirmSync": false,
+
   // Telemetry
   "workbench.enableExperiments": false,
   "telemetry.feedback.enabled": false,
@@ -55,15 +60,4 @@
   // Prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true
-
-  // Extensions:
-  // vscode-icons
-  // vscode-pets
-  // Prettier
-  // Error Lens
-  // Python
-  // Jupiter
-  // Dart
-  // Flutter
-  // Container Tools
 }

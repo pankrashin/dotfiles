@@ -42,7 +42,15 @@
 # # Just for example:
 # resize-overlay-duration = 4s 200ms
 
+auto-update = off # Update via Homebrew
+
 theme = Apple System Colors
+
 font-family = MonoLisa
-font-style = bold
+font-style = Medium
 font-size = 14
+
+shell-integration = zsh
+
+mouse-hide-while-typing = true
+

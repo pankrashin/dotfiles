@@ -139,26 +139,46 @@ export PATH=$HOME/.gem/bin:$PATH
 
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
+# Herd Lite
+export PATH="/Users/daniil/.config/herd-lite/bin:$PATH"
+export PHP_INI_SCAN_DIR="/Users/daniil/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
+# Add Visual Studio Code (code)
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # Aliases
 alias zshconfig="code ~/.zshrc"
-alias vi="nvim"
-alias vim="nvim"
-alias cat="bat"
-alias cddev="cd ~/Developer"
 alias sshconfig="code ~/.ssh/config"
 alias sshknownhosts="code ~/.ssh/known_hosts"
 alias dotfiles="code ~/Developer/dotfiles"
+alias cddev="cd ~/Developer"
 alias create-venv="python3 -m venv venv"
 alias activate-venv="source venv/bin/activate"
-alias sethostname='function _sethostname() {
+alias gs="git status"
+
+# Set hostname
+alias sethostname='f() {
   if [[ -z "$1" ]]; then
     echo "Usage: sethostname <new-hostname>"
     return 1
   fi
   NAME="$1"
-  echo "Setting hostname to $NAME (requires sudo)..."
-  sudo scutil --set HostName "$NAME"
-  sudo scutil --set LocalHostName "$NAME"
-  sudo scutil --set ComputerName "$NAME"
-  dscacheutil -flushcache
-}; _sethostname'
+  echo "Setting hostname to $NAME (requires sudo)...";
+  sudo scutil --set HostName "$NAME";
+  sudo scutil --set LocalHostName "$NAME";
+  sudo scutil --set ComputerName "$NAME";
+  dscacheutil -flushcache;
+  unset -f f;
+}; f'
+
+
+# Get app bundle ID
+alias appid='f(){
+  if [[ -z "$1" ]]; then
+    echo "Usage: appid <application-name>"
+    return 1
+  fi
+  APP="$1"
+  osascript -e "id of app \"$APP\""; 
+  unset -f f; 
+}; f'
