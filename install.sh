@@ -88,17 +88,15 @@ install_homebrew_and_packages() {
 setup_vscode() {
     print_header "Setting up Visual Studio Code"
 
-    # Install Visual Studio Code
+    print_info "Installing Visual Studio Code..."
     brew install --cask visual-studio-code
 
-    # Add VS Code `code` command to PATH in .zshrc
     print_info "Adding VS Code 'code' command to PATH in .zshrc..."
     cat << EOF >> ~/.zshrc
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 EOF
 
-    # Add VS Code to the *current* script's PATH to install extensions
     export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
     
     # Check if `code` command is available before installing extensions
@@ -118,7 +116,6 @@ EOF
     code --install-extension ms-toolsai.jupyter              # Jupyter
 
     print_info "Setting VS Code as the default editor for common file types..."
-    # Fetches common file extensions from GitHub Linguist and sets VS Code as the default
     brew install duti python-yq
     curl -s "https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml" \
       | yq -r "to_entries | (map(.value.extensions) | flatten) - [null] | unique | .[]" \
@@ -136,5 +133,4 @@ main() {
     print_info "Please restart your terminal or run 'source ~/.zshrc' for all changes to take effect."
 }
 
-# Run the main function
 main
