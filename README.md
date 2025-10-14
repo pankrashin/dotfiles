@@ -1,9 +1,10 @@
-# Daniil Pankrashin's Dot Files
+# Daniil Pankrashin's Dotfiles
 
-These are the various config files I use to setup a system the way I want it.
+This repository serves as a collection of my commonly used tools and configuration files.
 
-## Installation
+## Shell Setup (macOS & Linux)
 
-```bash
-git clone git://github.com/pankrashin/dotfiles.git
-dotfiles/install.sh
+- Terminal Emulator - [Kitty](https://sw.kovidgoyal.net/kitty/)
+- Shell - [Zsh](https://www.zsh.org)
+- Shell Prompt - [Starship](https://starship.rs)
+- Font - [MonoLisa](https://www.monolisa.dev)
