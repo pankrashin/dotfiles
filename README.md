@@ -1,4 +1,4 @@
-# Daniil Pankrashin's Dotfiles
+# My Dotfiles
 
 This repository serves as a collection of my commonly used tools and configuration files.
 
