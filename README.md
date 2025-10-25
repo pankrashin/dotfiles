@@ -7,7 +7,7 @@ This repository serves as a collection of my commonly used tools and configurati
 - Terminal Emulator - [Kitty](https://sw.kovidgoyal.net/kitty/)
 - Shell - [Zsh](https://www.zsh.org)
 - Shell Prompt - [Starship](https://starship.rs)
-- Font - [MonoLisa](https://www.monolisa.dev)
+- Font - [TX-02 Berkeley Mono](https://usgraphics.com/products/berkeley-mono)
 - File Manager - [Yazi](https://yazi-rs.github.io)
 - Dotfiles Manager - [Yadm](https://yadm.io/)
 - Git - [Lazygit](https://github.com/jesseduffield/lazygit)
