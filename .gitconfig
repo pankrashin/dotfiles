@@ -1,0 +1,21 @@
+[user]
+    name = Daniil Pankrashin
+    email = daniil@pankrashin.com
+[core]
+    pager = delta
+    excludesfile = ~/.gitignore_global
+[init]
+    defaultBranch = main
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    dark = true
+    line-numbers = true
+[pull]
+    rebase = true
+[push]
+    autoSetupRemote = true
+    default = current
+[merge]
+    conflictStyle = zdiff3
