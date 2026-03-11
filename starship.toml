@@ -1,0 +1,15 @@
+right_format = "$time"
+
+[directory]
+truncate_to_repo = false
+truncation_length = 0
+
+[character]
+format = "$symbol  "
+success_symbol = "[](bold green)"
+error_symbol = "[](bold red)"
+
+[time]
+disabled = false
+format = "[ $time]($style) "
+style = "bold #ffbd5e"
