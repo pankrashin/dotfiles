@@ -9,9 +9,12 @@
 [interactive]
     diffFilter = delta --color-only
 [delta]
+    features = cyberdream
     navigate = true
     dark = true
     line-numbers = true
+[delta "decorations"]
+  syntax-theme = cyberdream
 [pull]
     rebase = true
 [push]
