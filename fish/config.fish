@@ -21,67 +21,67 @@ if status is-interactive
                            --processes=super-p \
                            --variables=super-e
 
+    # nvm
+    set -U nvm_default_version lts
+    set -U nvm_default_packages yarn
+
     # cd
-    abbr -a cddesk 'cd ~/Desktop'
-    abbr -a cddown 'cd ~/Downloads'
-    abbr -a cddev 'cd ~/Developer'
-    abbr -a cdproj 'cd ~/Developer/projects'
-    abbr -a cdikat 'cd ~/Developer/ikat'
-    abbr -a cdhda 'cd ~/Developer/h-da'
+    abbr -a 'cddesk' 'cd ~/Desktop'
+    abbr -a 'cddev' 'cd ~/Developer'
+    abbr -a 'cddown' 'cd ~/Downloads'
+    abbr -a 'cdikat' 'cd ~/Developer/ikat'
+    abbr -a 'cdhda' 'cd ~/Developer/h-da'
 
     # tools
-    abbr --add '-' 'cd -'
-    abbr --add 't' 'touch'
-    abbr --add 'm' 'make'
-    abbr --add 'j' 'just'
-    abbr --add 'y' 'yarn'
-    abbr --add 'cc' 'claude code'
-    abbr --add 'cl' 'clear'
-    abbr --add 'ff' 'fastfetch'
-    abbr --add 'ls' 'eza -a -F -1 --group-directories-first --ignore-glob=".DS_Store"'
-    abbr --add 'rm' 'rm -rf'
-    abbr --add 'cat' 'bat'
-    abbr --add 'vim' 'nvim'
-    abbr --add 'lag' 'lazygit'
-    abbr --add 'lad' 'lazydocker'
-    abbr -a Y --position anywhere --set-cursor "%| pbcopy"
-    abbr -a L --position anywhere --set-cursor "%| less -r"
-    abbr -a F --position anywhere --set-cursor "%| fzf"
+    abbr -a '-' 'cd -'
+    abbr -a 't' 'touch'
+    abbr -a 'm' 'make'
+    abbr -a 'j' 'just'
+    abbr -a 'y' 'yarn'
+    abbr -a 'cc' 'claude code'
+    abbr -a 'cl' 'clear'
+    abbr -a 'ff' 'fastfetch'
+    abbr -a 'ls' 'eza -a -F -1 --group-directories-first --ignore-glob=".DS_Store"'
+    abbr -a 'rm' 'rm -rf'
+    abbr -a 'cat' 'bat'
+    abbr -a 'vim' 'nvim'
+    abbr -a 'lag' 'lazygit'
+    abbr -a 'lad' 'lazydocker'
+    abbr -a 'configs' 'nvim ~/.config'
+    abbr -a 'Y' --position anywhere --set-cursor '%| pbcopy'
+    abbr -a 'L' --position anywhere --set-cursor '%| less -r'
+    abbr -a 'F' --position anywhere --set-cursor '%| fzf'
 
     # ssh
-    abbr -a sshc 'nvim ~/.ssh/config'
+    abbr -a 'sshc' 'nvim ~/.ssh/config'
 
     # nvim
-    abbr -a vimc 'nvim ~/.config/nvim'
+    abbr -a 'vimc' 'nvim ~/.config/nvim'
 
     # git
-    abbr --add 'gs' 'git status'
-    abbr --add 'grr' 'git rebase --continue'
-    abbr --add 'gac' 'git add --all && git commit -m'
-    abbr --add 'gap' 'git commit --amend --no-edit && git push --force-with-lease'
-    abbr --add 'gaap' 'git add --all && git commit --amend --no-edit && git push --force-with-lease'
-    abbr --add 'gtsnap' 'git diff --name-only | imfzf -m -q .png | xargs git checkout'
-    abbr --add 'grim' 'git fetch && git rebase -i --autostash origin/(__git.default_branch)'
-    abbr --add 'grac' 'git add --all && git rebase --continue' 
-    abbr --add --position anywhere --set-cursor 'gbc' 'git branch --contains % | xargs git checkout'
+    abbr -a 'gs' 'git status'
+    abbr -a 'grr' 'git rebase --continue'
+    abbr -a 'gac' 'git add --all && git commit -m'
+    abbr -a 'gap' 'git commit --amend --no-edit && git push --force-with-lease'
+    abbr -a 'gaap' 'git add --all && git commit --amend --no-edit && git push --force-with-lease'
+    abbr -a 'gtsnap' 'git diff --name-only | imfzf -m -q .png | xargs git checkout'
+    abbr -a 'grim' 'git fetch && git rebase -i --autostash origin/(__git.default_branch)'
+    abbr -a 'grac' 'git add --all && git rebase --continue'
+    abbr -a 'gbc' --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
 
     # php
-    abbr --add 'a' 'php artisan'
-
-    # nvm
-    set --universal nvm_default_version lts
-    set --universal nvm_default_packages yarn
+    abbr -a 'a' 'php artisan'
 
     # python
-    abbr --add 'p' 'python3'
-    abbr --add 'pip' 'python3 -m pip'
-    abbr --add 'cvenv' 'python3 -m venv .venv'
-    abbr --add 'avenv' 'source .venv/bin/activate.fish'
-    abbr --add 'dvenv' 'deactivate'
+    abbr -a 'p' 'python3'
+    abbr -a 'pip' 'python3 -m pip'
+    abbr -a 'cvenv' 'python3 -m venv .venv'
+    abbr -a 'avenv' 'source .venv/bin/activate.fish'
+    abbr -a 'dvenv' 'deactivate'
 
     # uv
-    fish_add_path "/Users/daniil/.local/bin"
-    abbr --add 'ui' 'uv init'
-    abbr --add 'ur' 'uv run'
-    abbr --add 'ua' 'uv add'
+    fish_add_path '/Users/daniil/.local/bin'
+    abbr -a 'ui' 'uv init'
+    abbr -a 'ur' 'uv run'
+    abbr -a 'ua' 'uv add'
 end
