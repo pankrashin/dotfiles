@@ -11,7 +11,6 @@ brew "tree"
 brew "yazi"
 brew "neovim"
 brew "ripgrep"
-brew "lazygit"
 brew "posting"
 brew "fastfetch"
 
@@ -24,6 +23,8 @@ brew "mysql"
 brew "postgresql"
 
 # git
+brew "lazygit"
+brew "git-delta"
 
 # docker
 brew "docker"
