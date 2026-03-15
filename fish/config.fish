@@ -64,6 +64,7 @@ if status is-interactive
     abbr -a 'gac' 'git add --all && git commit -m'
     abbr -a 'gap' 'git commit --amend --no-edit && git push --force-with-lease'
     abbr -a 'gaap' 'git add --all && git commit --amend --no-edit && git push --force-with-lease'
+    abbr -a 'gacp' 'git add --all && git commit -m "$(date)" && git push'
     abbr -a 'gtsnap' 'git diff --name-only | imfzf -m -q .png | xargs git checkout'
     abbr -a 'grim' 'git fetch && git rebase -i --autostash origin/(__git.default_branch)'
     abbr -a 'grac' 'git add --all && git rebase --continue'
