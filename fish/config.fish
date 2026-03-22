@@ -1,4 +1,7 @@
 if status is-interactive
+    # xdg base directories
+    set -gx XDG_CONFIG_HOME "$HOME/.config"
+
     # fish
     abbr -a fishc 'fish_config'
     
@@ -41,14 +44,23 @@ if status is-interactive
     abbr -a 'cc' 'claude code'
     abbr -a 'cl' 'clear'
     abbr -a 'ff' 'fastfetch'
-    abbr -a 'ls' 'eza -a -F -1 --group-directories-first --ignore-glob=".DS_Store"'
     abbr -a 'rm' 'rm -rf'
     abbr -a 'cat' 'bat'
     abbr -a 'vim' 'nvim'
+    abbr -a 'lag' 'lazygit'
+    abbr -a 'lad' 'lazydocker'
     abbr -a 'configs' 'nvim ~/.config'
     abbr -a 'Y' --position anywhere --set-cursor '%| pbcopy'
     abbr -a 'L' --position anywhere --set-cursor '%| less -r'
     abbr -a 'F' --position anywhere --set-cursor '%| fzf'
+    
+    # lsd
+    abbr -a 'ls' 'lsd -1'
+    abbr -a 'la' 'lsd -1A'
+    abbr -a 'l' 'lsd -l'
+    abbr -a 'lla' 'lsd -la'
+    abbr -a 'lt' 'lsd --tree'
+    abbr -a 'lta' 'lsd --tree -a'
 
     # ssh
     abbr -a 'sshc' 'nvim ~/.ssh/config'
@@ -67,11 +79,6 @@ if status is-interactive
     abbr -a 'grim' 'git fetch && git rebase -i --autostash origin/(__git.default_branch)'
     abbr -a 'grac' 'git add --all && git rebase --continue'
     abbr -a 'gbc' --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
-
-    # lazygit & lazydocker
-    set -gx XDG_CONFIG_HOME "$HOME/.config"
-    abbr -a 'lag' 'lazygit'
-    abbr -a 'lad' 'lazydocker'
 
     # php
     abbr -a 'a' 'php artisan'
