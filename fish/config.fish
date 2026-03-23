@@ -2,6 +2,9 @@ if status is-interactive
     # xdg base directories
     set -gx XDG_CONFIG_HOME "$HOME/.config"
 
+    # pipx & uv
+    fish_add_path -g '/Users/daniil/.local/bin'
+
     # fish
     abbr -a fishc 'fish_config'
     
@@ -91,7 +94,6 @@ if status is-interactive
     abbr -a 'dvenv' 'deactivate'
 
     # uv
-    fish_add_path -g '/Users/daniil/.local/bin'
     abbr -a 'ui' 'uv init'
     abbr -a 'ur' 'uv run'
     abbr -a 'ua' 'uv add'
