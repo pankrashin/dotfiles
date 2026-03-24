@@ -1,7 +1,7 @@
-function ssh
-    if [ "$TERM" = "xterm-kitty" ]
-        kitty +kitten 'ssh' $argv
+function ssh --description "Use kitty's SSH kitten when running in kitty terminal"
+    if test "$TERM" = xterm-kitty
+        kitten ssh $argv
     else
-        ssh $argv
+        command ssh $argv
     end
 end

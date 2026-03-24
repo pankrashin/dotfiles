@@ -1,59 +1,57 @@
-# shell
-brew "fish"
-
-# tools
-brew "fd"
+brew "openssl@3"
 brew "bat"
-brew "eza"
-brew "fzf"
 brew "btop"
-brew "tree"
-brew "yazi"
-brew "neovim"
-brew "ripgrep"
-brew "posting"
-brew "fastfetch"
-
-# languages
-brew "php"
-
-# databases
+brew "chafa"
+brew "lima"
+brew "colima"
+brew "gd"
+brew "libzip"
 brew "sqlite"
-brew "mysql"
-brew "postgresql"
-
-# git
-brew "lazygit"
-brew "git-delta"
-
-# docker
+brew "php", link: false
+brew "composer"
+brew "ctop"
 brew "docker"
 brew "docker-buildx"
 brew "docker-compose"
-brew "colima"
-brew "lazydocker"
-
-# media
-brew "imagemagick"
+brew "fastfetch"
+brew "fd"
 brew "ffmpeg"
-brew "webp"
-brew "chafa"
-brew "viu"
-brew "youtube-dl"
-brew "yt-dlp"
-
-# network
-brew "wget"
-brew "wgcf"
+brew "fish"
+brew "fzf"
+brew "geckodriver"
+brew "git"
+brew "git-delta"
+brew "python@3.14", link: false
+brew "hf"
+brew "httpie"
+brew "imagemagick"
+brew "ipatool"
+brew "just"
+brew "lazydocker"
+brew "lazygit"
+brew "llama.cpp"
+brew "lsd"
+brew "mole"
+brew "mysql"
+brew "neovim"
 brew "nmap"
-brew "mitmproxy"
-brew "speedtest-cli"
-
-# ai agents
-brew "claude-code"
-brew "codex"
-brew "gemini-cli"
-brew "copilot-cli"
-brew "opencode"
-brew "qwen-code"
+brew "ollama"
 brew "openclaw-cli"
+brew "osmium-tool"
+brew "php@8.2", link: true
+brew "pie"
+brew "pipx"
+brew "pkgconf"
+brew "postgresql@18", link: true
+brew "pyenv"
+brew "ripgrep"
+brew "terminal-notifier"
+brew "uv"
+brew "viu"
+brew "wgcf"
+brew "wget"
+brew "xh"
+brew "yazi"
+brew "yt-dlp"
+cask "claude-code"
+cask "mitmproxy"

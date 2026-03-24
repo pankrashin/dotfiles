@@ -1,9 +1,11 @@
 if status is-interactive
+    # paths
+    fish_add_path -g '/opt/homebrew/bin' # homebrew
+    fish_add_path -g '/Users/daniil/.local/bin' # xpip
+    fish_add_path -g '/Users/daniil/.pyenv/shims'  # pyenv
+
     # xdg base directories
     set -gx XDG_CONFIG_HOME "$HOME/.config"
-
-    # pipx & uv
-    fish_add_path -g '/Users/daniil/.local/bin'
 
     # fish
     abbr -a fishc 'fish_config'
@@ -19,7 +21,7 @@ if status is-interactive
     set -gx tide_git_color_untracked 7b8496
     set -gx tide_git_color_upstream 5ef1ff
 
-    # fzf
+    # fzf.fish
     fzf_configure_bindings --directory=super-f \
                            --git_log=super-l \
                            --git_status=super-s \
@@ -27,9 +29,17 @@ if status is-interactive
                            --processes=super-p \
                            --variables=super-e
 
-    # nvm
+    # nvm.fish
     set -gx nvm_default_version lts
     set -gx nvm_default_packages yarn
+
+    # done
+    set -g __done_min_cmd_duration 10000
+
+    # kitty kittens
+    abbr -a 'ki' 'kitten icat'
+    abbr -a 'kt' 'kitten transfer'
+    abbr -a 'kc' 'kitten clipboard'
 
     # cd
     abbr -a 'cddesk' 'cd ~/Desktop'
@@ -52,6 +62,7 @@ if status is-interactive
     abbr -a 'vim' 'nvim'
     abbr -a 'lag' 'lazygit'
     abbr -a 'lad' 'lazydocker'
+    abbr -a 'diff' 'nvim -d'
     abbr -a 'configs' 'nvim ~/.config'
     abbr -a 'Y' --position anywhere --set-cursor '%| pbcopy'
     abbr -a 'L' --position anywhere --set-cursor '%| less -r'
@@ -87,9 +98,9 @@ if status is-interactive
     abbr -a 'a' 'php artisan'
 
     # python
-    abbr -a 'p' 'python3'
-    abbr -a 'pip' 'python3 -m pip'
-    abbr -a 'cvenv' 'python3 -m venv .venv'
+    abbr -a 'p' 'python'
+    abbr -a 'pip' 'python -m pip'
+    abbr -a 'cvenv' 'python -m venv .venv'
     abbr -a 'avenv' 'source .venv/bin/activate.fish'
     abbr -a 'dvenv' 'deactivate'
 
@@ -101,8 +112,8 @@ if status is-interactive
     # jupyter
     abbr -a 'jn' 'jupyter notebook'
     abbr -a 'jl' 'jupyter lab'
-    abbr -a 'pipjn' 'python3 -m pip install notebook'
-    abbr -a 'pipjl' 'python3 -m pip install jupyterlab'
+    abbr -a 'pipjn' 'python -m pip install notebook'
+    abbr -a 'pipjl' 'python -m pip install jupyterlab'
     abbr -a 'uajn' 'uv add notebook'
     abbr -a 'uajl' 'uv add jupyterlab'
 end
