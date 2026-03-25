@@ -1,8 +1,14 @@
 if status is-interactive
-    # paths
-    fish_add_path -g '/opt/homebrew/bin' # homebrew
-    fish_add_path -g '/Users/daniil/.local/bin' # xpip
-    fish_add_path -g '/Users/daniil/.pyenv/shims'  # pyenv
+    # homebrew
+    /opt/homebrew/bin/brew shellenv | source
+
+    # pipx
+    fish_add_path -g '/Users/daniil/.local/bin'
+
+    #pyenv
+    set -gx PYENV_ROOT $HOME/.pyenv
+    fish_add_path -g $PYENV_ROOT/bin
+    pyenv init - fish | source
 
     # xdg base directories
     set -gx XDG_CONFIG_HOME "$HOME/.config"
