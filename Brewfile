@@ -1,3 +1,4 @@
+tap "shivammathur/php"
 brew "xz"
 brew "zstd"
 brew "openssl@3"
