@@ -3,21 +3,21 @@ if status is-interactive
     /opt/homebrew/bin/brew shellenv | source
 
     # pipx
-    fish_add_path -g '/Users/daniil/.local/bin'
+    fish_add_path -g ~/.local/bin
 
     #pyenv
     set -gx PYENV_ROOT $HOME/.pyenv
     fish_add_path -g $PYENV_ROOT/bin
     pyenv init - fish | source
 
-    # xdg base directories
-    set -gx XDG_CONFIG_HOME "$HOME/.config"
+    #lm studio
+    fish_add_path -g ~/.lmstudio/bin
 
-    # fish
-    abbr -a fishc 'fish_config'
-    
+    # xdg base directories
+    set -gx XDG_CONFIG_HOME $HOME/.config
+
     # tide
-    set -gx tide_git_icon ''
+    set -gx tide_git_icon 
     set -gx tide_git_color_branch ff6e5e
     set -gx tide_git_color_conflicted ff6e5e
     set -gx tide_git_color_dirty ffbd5e
@@ -37,89 +37,94 @@ if status is-interactive
 
     # nvm.fish
     set -gx nvm_default_version lts
-    set -gx nvm_default_packages yarn
+    set -gx nvm_default_packages yarn pnpm
 
     # done
     set -g __done_min_cmd_duration 10000
 
     # kitty kittens
-    abbr -a 'ki' 'kitten icat'
-    abbr -a 'kt' 'kitten transfer'
-    abbr -a 'kc' 'kitten clipboard'
+    abbr -a ki 'kitten icat'
+    abbr -a kt 'kitten transfer'
+    abbr -a kc 'kitten clipboard'
 
     # cd
-    abbr -a 'cddesk' 'cd ~/Desktop'
-    abbr -a 'cddev' 'cd ~/Developer'
-    abbr -a 'cdikat' 'cd ~/Developer/ikat'
-    abbr -a 'cdhda' 'cd ~/Developer/h-da'
-    abbr -a 'cddown' 'cd ~/Downloads'
+    abbr -a cddesk 'cd ~/Desktop'
+    abbr -a cddev 'cd ~/Developer'
+    abbr -a cdikat 'cd ~/Developer/ikat'
+    abbr -a cdhda 'cd ~/Developer/h-da'
+    abbr -a cddown 'cd ~/Downloads'
 
     # tools
-    abbr -a '-' 'cd -'
-    abbr -a 't' 'touch'
-    abbr -a 'm' 'make'
-    abbr -a 'j' 'just'
-    abbr -a 'y' 'yarn'
-    abbr -a 'cc' 'claude code'
-    abbr -a 'cl' 'clear'
-    abbr -a 'ff' 'fastfetch'
-    abbr -a 'rm' 'rm -rf'
-    abbr -a 'cat' 'bat'
-    abbr -a 'vim' 'nvim'
-    abbr -a 'lag' 'lazygit'
-    abbr -a 'lad' 'lazydocker'
-    abbr -a 'diff' 'nvim -d'
-    abbr -a 'configs' 'nvim ~/.config'
-    abbr -a 'Y' --position anywhere --set-cursor '%| pbcopy'
-    abbr -a 'L' --position anywhere --set-cursor '%| less -r'
-    abbr -a 'F' --position anywhere --set-cursor '%| fzf'
+    abbr -a - 'cd -'
+    abbr -a t 'touch'
+    abbr -a m 'make'
+    abbr -a j 'just'
+    abbr -a y 'yarn'
+    abbr -a cc 'claude code'
+    abbr -a cl 'clear'
+    abbr -a ff 'fastfetch'
+    abbr -a rm 'rm -rf'
+    abbr -a ip 'curl -s ipinfo.io | jq '
+    abbr -a cat 'bat'
+    abbr -a vim 'nvim'
+    abbr -a lag 'lazygit'
+    abbr -a lad 'lazydocker'
+    abbr -a diff 'nvim -d'
+    abbr -a Y --position anywhere --set-cursor '%| pbcopy'
+    abbr -a L --position anywhere --set-cursor '%| less -r'
+    abbr -a F --position anywhere --set-cursor '%| fzf'
+
+    # configs
+    abbr -a configs 'nvim ~/.config'
+    abbr -a fishc 'nvim ~/.config/fish/config.fish'
+    abbr -a vimc 'nvim ~/.config/nvim/init.lua'
+    abbr -a sshc 'nvim ~/.ssh/config'
+    abbr -a hosts 'nvim /etc/hosts'
     
     # lsd
-    abbr -a 'ls' 'lsd -1'
-    abbr -a 'la' 'lsd -1A'
-    abbr -a 'l' 'lsd -l'
-    abbr -a 'lla' 'lsd -la'
-    abbr -a 'lt' 'lsd --tree'
-    abbr -a 'lta' 'lsd --tree -a'
-
-    # ssh
-    abbr -a 'sshc' 'nvim ~/.ssh/config'
-
-    # nvim
-    abbr -a 'vimc' 'nvim ~/.config/nvim'
+    abbr -a ls 'lsd -1'
+    abbr -a la 'lsd -1A'
+    abbr -a l 'lsd -l'
+    abbr -a lla 'lsd -lA'
+    abbr -a lt 'lsd --tree'
+    abbr -a lta 'lsd --tree -a'
 
     # git
-    abbr -a 'gs' 'git status'
-    abbr -a 'grr' 'git rebase --continue'
-    abbr -a 'gac' 'git add --all && git commit -m'
-    abbr -a 'gap' 'git commit --amend --no-edit && git push --force-with-lease'
-    abbr -a 'gaap' 'git add --all && git commit --amend --no-edit && git push --force-with-lease'
-    abbr -a 'gacdp' 'git add --all && git commit -m "$(date)" && git push'
-    abbr -a 'gtsnap' 'git diff --name-only | imfzf -m -q .png | xargs git checkout'
-    abbr -a 'grim' 'git fetch && git rebase -i --autostash origin/(__git.default_branch)'
-    abbr -a 'grac' 'git add --all && git rebase --continue'
-    abbr -a 'gbc' --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
+    abbr -a gs 'git status'
+    abbr -a grr 'git rebase --continue'
+    abbr -a gac 'git add --all && git commit -m'
+    abbr -a gap 'git commit --amend --no-edit && git push --force-with-lease'
+    abbr -a gaap 'git add --all && git commit --amend --no-edit && git push --force-with-lease'
+    abbr -a gacdp 'git add --all && git commit -m "$(date)" && git push'
+    abbr -a gtsnap 'git diff --name-only | imfzf -m -q .png | xargs git checkout'
+    abbr -a grim 'git fetch && git rebase -i --autostash origin/(__git.default_branch)'
+    abbr -a grac 'git add --all && git rebase --continue'
+    abbr -a gbc --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
 
     # php
-    abbr -a 'a' 'php artisan'
+    abbr -a a 'php artisan'
 
     # python
-    abbr -a 'p' 'python'
-    abbr -a 'pip' 'python -m pip'
-    abbr -a 'cvenv' 'python -m venv .venv'
-    abbr -a 'avenv' 'source .venv/bin/activate.fish'
-    abbr -a 'dvenv' 'deactivate'
+    abbr -a p 'python'
+    abbr -a pv 'python --version'
+    abbr -a pip 'python -m pip'
+    abbr -a cvenv 'python -m venv .venv'
+    abbr -a avenv 'source .venv/bin/activate.fish'
+    abbr -a dvenv 'deactivate'
 
     # uv
-    abbr -a 'ui' 'uv init'
-    abbr -a 'ur' 'uv run'
-    abbr -a 'ua' 'uv add'
+    abbr -a ui 'uv init'
+    abbr -a ur 'uv run'
+    abbr -a ua 'uv add'
 
     # jupyter
-    abbr -a 'jn' 'jupyter notebook'
-    abbr -a 'jl' 'jupyter lab'
-    abbr -a 'pipjn' 'python -m pip install notebook'
-    abbr -a 'pipjl' 'python -m pip install jupyterlab'
-    abbr -a 'uajn' 'uv add notebook'
-    abbr -a 'uajl' 'uv add jupyterlab'
+    abbr -a jn 'jupyter notebook'
+    abbr -a jl 'jupyter lab'
+    abbr -a pipjn 'python -m pip install notebook'
+    abbr -a pipjl 'python -m pip install jupyterlab'
+    abbr -a uajn 'uv add notebook'
+    abbr -a uajl 'uv add jupyterlab'
+
+    # gpu wired memory
+    abbr -a gwm 'sudo sysctl iogpu.wired_limit_mb=40960'
 end
