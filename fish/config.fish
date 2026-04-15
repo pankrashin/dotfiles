@@ -127,4 +127,7 @@ if status is-interactive
 
     # gpu wired memory
     abbr -a gwm 'sudo sysctl iogpu.wired_limit_mb=40960'
+    
+    # maya
+    abbr -a maya 'open /Users/daniil/Library/Preferences/Autodesk/maya/'
 end
