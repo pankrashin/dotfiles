@@ -1,4 +1,15 @@
 if status is-interactive
+    # macos dock
+    abbr -a dlock 'defaults write com.apple.dock size-immutable -bool true; killall Dock'
+    abbr -a dunlock 'defaults write com.apple.dock size-immutable -bool false; killall Dock'
+
+    # finder
+    abbr -a shidden 'defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder;'
+    abbr -a hhidden 'defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder;'
+
+    # gpu wired memory (40GB)
+    abbr -a gwm 'sudo sysctl iogpu.wired_limit_mb=40960'
+
     # homebrew
     /opt/homebrew/bin/brew shellenv | source
 
@@ -125,9 +136,6 @@ if status is-interactive
     abbr -a uajn 'uv add notebook'
     abbr -a uajl 'uv add jupyterlab'
 
-    # gpu wired memory
-    abbr -a gwm 'sudo sysctl iogpu.wired_limit_mb=40960'
-    
     # maya
     abbr -a maya 'open /Users/daniil/Library/Preferences/Autodesk/maya/'
 end
