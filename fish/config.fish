@@ -28,7 +28,12 @@ if status is-interactive
     set -gx XDG_CONFIG_HOME $HOME/.config
 
     # tide
-    set -gx tide_git_icon 
+    # match pwd colors with cyberdream theme
+    set -gx tide_pwd_color_anchors ffbd5e
+    set -gx tide_pwd_color_dirs ffbd5e
+    set -gx tide_pwd_color_truncated_dirs ffbd5e
+    # git
+    set -gx tide_git_icon 
     set -gx tide_git_color_branch ff6e5e
     set -gx tide_git_color_conflicted ff6e5e
     set -gx tide_git_color_dirty ffbd5e
@@ -71,7 +76,7 @@ if status is-interactive
     abbr -a m 'make'
     abbr -a j 'just'
     abbr -a y 'yarn'
-    abbr -a cc 'claude code'
+    abbr -a cc 'claude'
     abbr -a cl 'clear'
     abbr -a ff 'fastfetch'
     abbr -a rm 'rm -rf'
@@ -114,6 +119,7 @@ if status is-interactive
 
     # php
     abbr -a a 'php artisan'
+    abbr -a aoc 'php artisan optimize:clear'
 
     # python
     abbr -a p 'python'
