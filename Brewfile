@@ -62,3 +62,16 @@ brew "yt-dlp"
 brew "zlib"
 cask "claude-code"
 cask "mitmproxy"
+
+mas "Pages",              id: 361309726
+mas "Numbers",            id: 361304891
+mas "Keynote",            id: 361285480
+mas "WhatsApp",           id: 310633997
+mas "Telegram",           id: 747648890
+mas "WeChat",             id: 836500024
+mas "Microsoft Outlook",  id: 985367838
+mas "uBlock Origin Lite", id: 6745342698
+mas "Swift Playground",   id: 1496833156
+mas "WireGuard",          id: 1451685025
+mas "Tailscale",          id: 1475387142
+mas "Shadowrocket",       id: 932747118
