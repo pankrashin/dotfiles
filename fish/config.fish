@@ -3,6 +3,8 @@ if status is-interactive
     abbr -a dlock 'defaults write com.apple.dock size-immutable -bool true; killall Dock'
     abbr -a dunlock 'defaults write com.apple.dock size-immutable -bool false; killall Dock'
 
+    set fish_cursor_default block
+
     # finder
     abbr -a shidden 'defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder;'
     abbr -a hhidden 'defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder;'
