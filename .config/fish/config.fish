@@ -19,11 +19,14 @@ if status is-interactive
 
     # network
     abbr -a myip 'curl -s ipinfo.io | jq'
-    abbr -a dspeed 'iperf3 -c fra.speedtest.clouvider.net -p 5200-5209 -R'
-    abbr -a uspeed 'iperf3 -c fra.speedtest.clouvider.net -p 5200-5209'
+    abbr -a dspeed 'while true; iperf3 -c fra.speedtest.clouvider.net -p 5200-5209 -R; test $status -eq 0; and break; sleep 1; end'
+    abbr -a uspeed 'while true; iperf3 -c fra.speedtest.clouvider.net -p 5200-5209; test $status -eq 0; and break; sleep 1; end'
 
     # xdg base directories
     set -gx XDG_CONFIG_HOME $HOME/.config
+
+    # vivid
+    set -gx LS_COLORS (vivid generate cyberdream)
 
     # tide
     set -gx tide_pwd_color_anchors ffbd5e
@@ -35,26 +38,30 @@ if status is-interactive
     set -gx tide_git_color_branch ff6e5e
     set -gx tide_git_color_conflicted ff6e5e
     set -gx tide_git_color_dirty ffbd5e
-    set -gx tide_git_color_operation ff5ea0
+    set -gx tide_git_color_operation 5ea1ff
     set -gx tide_git_color_staged 5eff6c
     set -gx tide_git_color_stash bd5eff
-    set -gx tide_git_color_untracked 7b8496
+    set -gx tide_git_color_untracked ffaecf
     set -gx tide_git_color_upstream 5ef1ff
 
     # fzf.fish
     fzf_configure_bindings --directory=super-f \
                            --git_log=super-l \
-                           --git_status=super-s \
+                           --git_status=super-g \
                            --history=super-i \
                            --processes=super-p \
                            --variables=super-e
 
-    set -Ux FZF_DEFAULT_OPTS "\
-    --color=bg:-1,bg+:-1 \
-    --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
-    --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl:#F38BA8,hl+:#F38BA8 \
-    --color=selected-bg:-1 \
-    --color=border:#6C7086,label:#CDD6F4"
+    set -gx fzf_preview_dir_cmd lsd --almost-all --color=always --icon=always --group-directories-first
+
+    set -gx FZF_DEFAULT_OPTS "\
+        --color=fg:#ffffff,fg+:#ffffff,bg:#16181a,bg+:#3c4048 \
+        --color=hl:#5ef1ff,hl+:#5ef1ff,info:#7b8496,marker:#5eff6c \
+        --color=prompt:#ffbd5e,spinner:#bd5eff,pointer:#ffaecf,header:#5ef5d2 \
+        --color=border:#3c4048,label:#ffbd5e,query:#ffffff \
+        --border=rounded --border-label=fzf --border-label-pos=0 --preview-window=border-rounded \
+        --prompt='> ' --marker='>' --pointer='◆' --separator='─' \
+        --scrollbar='│' --layout=reverse --info=right"
 
     # nvm.fish
     set --universal nvm_default_version lts
@@ -66,10 +73,14 @@ if status is-interactive
     # fish_title
     set -g fish_title_no_pwd man less sleep caffeinate btop ctop lazydocker meridian
 
-    # kitty kittens
+    # kittens
     abbr -a ki 'kitten icat'
     abbr -a kt 'kitten transfer'
     abbr -a kc 'kitten clipboard'
+
+    # ssh
+    abbr -a sshl 'ssh-add -L'
+    abbr -a ssha --set-cursor 'ssh-add --apple-use-keychain ~/.ssh/keys/%'
 
     # cd
     abbr -a cddesk 'cd ~/Desktop'
@@ -93,9 +104,9 @@ if status is-interactive
     abbr -a lag 'lazygit'
     abbr -a lad 'lazydocker'
     abbr -a diff 'nvim -d'
-    # abbr -a Y --position anywhere --set-cursor '%| pbcopy'
-    # abbr -a L --position anywhere --set-cursor '%| less -r'
-    # abbr -a F --position anywhere --set-cursor '%| fzf'
+    abbr -a L --position anywhere --set-cursor "%| less -r"
+    abbr -a F --position anywhere --set-cursor "%| fzf"
+    abbr -a Y --position anywhere --set-cursor "%| pbcopy"
 
     # configs
     abbr -a configs 'nvim ~/.config'
@@ -105,12 +116,9 @@ if status is-interactive
     abbr -a hosts 'nvim /etc/hosts'
     
     # lsd
-    abbr -a ls 'lsd -1'
-    abbr -a la 'lsd -1A'
-    abbr -a l 'lsd -l'
-    abbr -a lla 'lsd -lA'
-    abbr -a lt 'lsd --tree'
-    abbr -a lta 'lsd --tree -a'
+    abbr -a l 'lsd -Al'
+    abbr -a ls 'lsd -A1'
+    abbr -a lt 'lsd -A --tree'
 
     # git
     abbr -a gs 'git status'
@@ -122,7 +130,7 @@ if status is-interactive
     abbr -a gtsnap 'git diff --name-only | imfzf -m -q .png | xargs git checkout'
     abbr -a grim 'git fetch && git rebase -i --autostash origin/(__git.default_branch)'
     abbr -a grac 'git add --all && git rebase --continue'
-    # abbr -a gbc --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
+    abbr -a gbc --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
 
     # php
     abbr -a a 'php artisan'
@@ -151,7 +159,9 @@ if status is-interactive
     abbr -a uajl 'uv add jupyterlab'
 
     # hugging face
+    abbr -a hfd 'hf download'
     abbr -a hfcl 'hf cache ls'
+    abbr -a hfcr 'hf cache rm'
 
     # tailscale
     abbr -a tailscale '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
@@ -162,6 +172,5 @@ if status is-interactive
     # firecrawl
     set -gx FIRECRAWL_API_URL 'http://localhost:3002'
     set -gx FIRECRAWL_API_KEY 'firecrawl'
-
 end
 
