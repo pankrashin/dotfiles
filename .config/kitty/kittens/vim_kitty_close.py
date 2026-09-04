@@ -17,11 +17,14 @@ def handle_result(args: list[str], answer: str, target_window_id: int, boss: Bos
         cmdline = process.get("cmdline")
         if not cmdline:
             continue
+
         name = os.path.basename(cmdline[0])
+
         if name == "nvim":
-            window.write_to_child(b"\x1bZZ")
+            window.write_to_child(b"\x1b[119;9u") # cmd+w is mapped in neovim
             return
-        if name == "kitten":
+
+        if name in ("kitty", "kitten") and "ask" in cmdline[1:3]:
             return
 
     boss.close_window_with_confirmation(window)

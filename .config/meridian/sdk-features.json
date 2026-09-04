@@ -1,0 +1,9 @@
+{
+  "pi": {
+    "codeSystemPrompt": false,
+    "clientSystemPrompt": true,
+    "thinking": "enabled",
+    "thinkingPassthrough": true,
+    "webFetchPreflight": false
+  }
+}

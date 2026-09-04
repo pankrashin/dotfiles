@@ -9,9 +9,14 @@ LEFT_CAP = ""
 RIGHT_CAP = ""
 SEPARATOR = "│"
 
-TROUGH_BLEND = 0.10
-INACTIVE_TEXT_BLEND = 0.55
-SEPARATOR_BLEND = 0.25
+# cursor.bg == 0 means "the default background", the only background kitty keeps
+# translucent under background_opacity/background_blur. Any explicit color is
+# painted opaque, even when it is identical to the default background.
+DEFAULT_BG = 0
+DEFAULT_FG = 0
+
+INACTIVE_TEXT_BLEND = 0.65
+SEPARATOR_BLEND = 0.30
 
 _SGR = re.compile("\x1b\\[[0-9:;]*m")
 
@@ -28,13 +33,10 @@ def _blend(a: int, b: int, f: float) -> int:
 
 
 @lru_cache(maxsize=8)
-def _palette(bar_bg: int, ref_fg: int) -> tuple[int, int, int, int]:
-    trough = _blend(bar_bg, ref_fg, TROUGH_BLEND)
+def _palette(bar_bg: int, ref_fg: int) -> tuple[int, int]:
     return (
-        as_rgb(bar_bg),
-        as_rgb(trough),
-        as_rgb(_blend(trough, ref_fg, INACTIVE_TEXT_BLEND)),
-        as_rgb(_blend(trough, ref_fg, SEPARATOR_BLEND)),
+        as_rgb(_blend(bar_bg, ref_fg, INACTIVE_TEXT_BLEND)),
+        as_rgb(_blend(bar_bg, ref_fg, SEPARATOR_BLEND)),
     )
 
 
@@ -83,20 +85,26 @@ def draw_tab(
         screen.cursor.x = x1
         return x1
 
-    bar_bg, trough, inactive_fg, sep_fg = _palette(
+    inactive_fg, sep_fg = _palette(
         color_as_int(draw_data.default_bg), color_as_int(draw_data.inactive_fg)
     )
     active_bg = as_rgb(draw_data.tab_bg(tab))
     bold, italic = screen.cursor.bold, screen.cursor.italic
 
-    def put(x: int, text: str, fg: int, bg: int, b: bool = False, i: bool = False) -> None:
+    def put(
+        x: int, text: str, fg: int, bg: int, b: bool = False, i: bool = False
+    ) -> None:
         screen.cursor.x = x
         screen.cursor.fg, screen.cursor.bg = fg, bg
         screen.cursor.bold, screen.cursor.italic = b, i
         screen.draw(text)
 
-    fill = active_bg if tab.is_active else trough
-    text_fg = as_rgb(draw_data.tab_fg(tab)) if tab.is_active else inactive_fg
+    if tab.is_active:
+        fill = active_bg
+        text_fg = as_rgb(draw_data.tab_fg(tab))
+    else:
+        fill = DEFAULT_BG
+        text_fg = inactive_fg
 
     put(x0, " " * width, text_fg, fill)
 
@@ -107,17 +115,15 @@ def draw_tab(
         put(x0 + 1 + (inner - wcswidth(title)) // 2, title, text_fg, fill, bold, italic)
 
     if tab.is_active:
-        put(x0, LEFT_CAP, active_bg, bar_bg if index == 1 else trough)
-    elif index == 1:
-        put(x0, LEFT_CAP, trough, bar_bg)
-
-    if tab.is_active:
-        put(x1 - 1, RIGHT_CAP, active_bg, bar_bg if is_last else trough)
-    elif is_last:
-        put(x1 - 1, RIGHT_CAP, trough, bar_bg)
+        # Round the pill off by painting the caps as foreground glyphs on the
+        # default background, so the bar stays transparent around them.
+        if width >= 2:
+            put(x0, LEFT_CAP, active_bg, DEFAULT_BG)
+            put(x1 - 1, RIGHT_CAP, active_bg, DEFAULT_BG)
     elif extra_data.next_tab is not None and not extra_data.next_tab.is_active:
-        put(x1 - 1, SEPARATOR, sep_fg, trough)
+        put(x1 - 1, SEPARATOR, sep_fg, DEFAULT_BG)
 
     screen.cursor.bold, screen.cursor.italic = bold, italic
+    screen.cursor.fg, screen.cursor.bg = DEFAULT_FG, DEFAULT_BG
     screen.cursor.x = x1
     return x1

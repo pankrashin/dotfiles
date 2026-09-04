@@ -1,0 +1,5 @@
+{
+  "plugins": [
+    { "path": "/Users/daniil/.config/meridian/plugins/meridian-plugin-pi-scrub/index.js", "enabled": true }
+  ]
+}
