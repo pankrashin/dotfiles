@@ -1,40 +1,36 @@
 if status is-interactive
-    # macos dock
+    #theme
+    fish_config theme choose cyberdream
+
+    # dock size
     abbr -a dlock 'defaults write com.apple.dock size-immutable -bool true; killall Dock'
     abbr -a dunlock 'defaults write com.apple.dock size-immutable -bool false; killall Dock'
 
-    set fish_cursor_default block
-
-    # finder
+    # finder show hidden files
     abbr -a shidden 'defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder;'
     abbr -a hhidden 'defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder;'
 
-    # gpu wired memory (40GB)
-    abbr -a gwm 'sudo sysctl iogpu.wired_limit_mb=40960'
+    # finder enable quit option
+    abbr -a fquit 'defaults write com.apple.finder "QuitMenuItem" -bool "true" && killall Finder'
+    abbr -a funquit 'defaults write com.apple.finder "QuitMenuItem" -bool "false" && killall Finder'
 
-    # homebrew
-    /opt/homebrew/bin/brew shellenv | source
+    # gpu wired memory (42GB)
+    abbr -a gwm 'sudo sysctl iogpu.wired_limit_mb=43008'
 
-    # pipx
-    fish_add_path -g ~/.local/bin
-
-    #pyenv
-    set -gx PYENV_ROOT $HOME/.pyenv
-    fish_add_path -g $PYENV_ROOT/bin
-    pyenv init - fish | source
-
-    #lm studio
-    fish_add_path -g ~/.lmstudio/bin
+    # network
+    abbr -a myip 'curl -s ipinfo.io | jq'
+    abbr -a dspeed 'iperf3 -c fra.speedtest.clouvider.net -p 5200-5209 -R'
+    abbr -a uspeed 'iperf3 -c fra.speedtest.clouvider.net -p 5200-5209'
 
     # xdg base directories
     set -gx XDG_CONFIG_HOME $HOME/.config
 
     # tide
-    # match pwd colors with cyberdream theme
     set -gx tide_pwd_color_anchors ffbd5e
     set -gx tide_pwd_color_dirs ffbd5e
     set -gx tide_pwd_color_truncated_dirs ffbd5e
-    # git
+
+    # tide git
     set -gx tide_git_icon 
     set -gx tide_git_color_branch ff6e5e
     set -gx tide_git_color_conflicted ff6e5e
@@ -53,12 +49,22 @@ if status is-interactive
                            --processes=super-p \
                            --variables=super-e
 
+    set -Ux FZF_DEFAULT_OPTS "\
+    --color=bg:-1,bg+:-1 \
+    --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+    --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl:#F38BA8,hl+:#F38BA8 \
+    --color=selected-bg:-1 \
+    --color=border:#6C7086,label:#CDD6F4"
+
     # nvm.fish
-    set -gx nvm_default_version lts
-    set -gx nvm_default_packages yarn pnpm
+    set --universal nvm_default_version lts
+    set --universal nvm_default_packages pnpm
 
     # done
     set -g __done_min_cmd_duration 10000
+
+    # fish_title
+    set -g fish_title_no_pwd man less sleep caffeinate btop ctop lazydocker meridian
 
     # kitty kittens
     abbr -a ki 'kitten icat'
@@ -82,15 +88,14 @@ if status is-interactive
     abbr -a cl 'clear'
     abbr -a ff 'fastfetch'
     abbr -a rm 'rm -rf'
-    abbr -a ip 'curl -s ipinfo.io | jq '
     abbr -a cat 'bat'
     abbr -a vim 'nvim'
     abbr -a lag 'lazygit'
     abbr -a lad 'lazydocker'
     abbr -a diff 'nvim -d'
-    abbr -a Y --position anywhere --set-cursor '%| pbcopy'
-    abbr -a L --position anywhere --set-cursor '%| less -r'
-    abbr -a F --position anywhere --set-cursor '%| fzf'
+    # abbr -a Y --position anywhere --set-cursor '%| pbcopy'
+    # abbr -a L --position anywhere --set-cursor '%| less -r'
+    # abbr -a F --position anywhere --set-cursor '%| fzf'
 
     # configs
     abbr -a configs 'nvim ~/.config'
@@ -117,7 +122,7 @@ if status is-interactive
     abbr -a gtsnap 'git diff --name-only | imfzf -m -q .png | xargs git checkout'
     abbr -a grim 'git fetch && git rebase -i --autostash origin/(__git.default_branch)'
     abbr -a grac 'git add --all && git rebase --continue'
-    abbr -a gbc --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
+    # abbr -a gbc --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
 
     # php
     abbr -a a 'php artisan'
@@ -132,6 +137,7 @@ if status is-interactive
     abbr -a dvenv 'deactivate'
 
     # uv
+    fish_add_path ~/.local/bin
     abbr -a ui 'uv init'
     abbr -a ur 'uv run'
     abbr -a ua 'uv add'
@@ -144,6 +150,18 @@ if status is-interactive
     abbr -a uajn 'uv add notebook'
     abbr -a uajl 'uv add jupyterlab'
 
-    # maya
-    abbr -a maya 'open /Users/daniil/Library/Preferences/Autodesk/maya/'
+    # hugging face
+    abbr -a hfcl 'hf cache ls'
+
+    # tailscale
+    abbr -a tailscale '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
+
+    # pi
+    abbr -a pis 'pi --session'
+
+    # firecrawl
+    set -gx FIRECRAWL_API_URL 'http://localhost:3002'
+    set -gx FIRECRAWL_API_KEY 'firecrawl'
+
 end
+
