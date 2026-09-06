@@ -24,6 +24,7 @@ if status is-interactive
     abbr -a myip 'curl -s ipinfo.io | jq'
     abbr -a dspeed 'while true; iperf3 -c fra.speedtest.clouvider.net -p 5200-5209 -R; test $status -eq 0; and break; sleep 1; end'
     abbr -a uspeed 'while true; iperf3 -c fra.speedtest.clouvider.net -p 5200-5209; test $status -eq 0; and break; sleep 1; end'
+    abbr -a hosts 'nvim /etc/hosts'
 
     # tailscale
     abbr -a tailscale '/Applications/Tailscale.app/Contents/MacOS/Tailscale'
@@ -116,9 +117,7 @@ if status is-interactive
     abbr -a configs 'nvim ~/.config'
     abbr -a kittyc 'nvim ~/.config/kitty/kitty.conf'
     abbr -a fishc 'nvim ~/.config/fish/config.fish'
-    abbr -a vimc 'nvim ~/.config/nvim/init.lua'
-    abbr -a sshc 'nvim ~/.ssh/config'
-    abbr -a hosts 'nvim /etc/hosts'
+    abbr -a nvimc 'nvim ~/.config/nvim/init.lua'
 
     # tools
     abbr -a t 'touch'
@@ -148,6 +147,7 @@ if status is-interactive
     abbr -a kc 'kitten clipboard'
 
     # ssh
+    abbr -a sshc 'nvim ~/.ssh/config'
     abbr -a sshl 'ssh-add -L'
     abbr -a ssha --set-cursor 'ssh-add --apple-use-keychain ~/.ssh/keys/%'
 
