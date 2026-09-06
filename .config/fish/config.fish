@@ -1,23 +1,23 @@
 if status is-interactive
-    # fish color theme
+    # color theme
     fish_config theme choose cyberdream
 
-    # my custom fish functions
+    # my custom functions
     set -p fish_function_path $__fish_config_dir/functions/daniil
 
-    # macos dock size
+    # dock size
     abbr -a dlock 'defaults write com.apple.dock size-immutable -bool true; killall Dock'
     abbr -a dunlock 'defaults write com.apple.dock size-immutable -bool false; killall Dock'
 
-    # macos finder show hidden files
+    # finder show hidden files
     abbr -a shidden 'defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder'
     abbr -a hhidden 'defaults write com.apple.finder AppleShowAllFiles -bool false; killall Finder'
 
-    # macos finder enable quit option
+    # finder enable quit option
     abbr -a fquit 'defaults write com.apple.finder QuitMenuItem -bool true; killall Finder'
     abbr -a funquit 'defaults write com.apple.finder QuitMenuItem -bool false; killall Finder'
 
-    # macos gpu wired memory (42GB)
+    # gpu wired memory (42GB)
     abbr -a gwm 'sudo sysctl iogpu.wired_limit_mb=43008'
 
     # network
@@ -142,7 +142,7 @@ if status is-interactive
     abbr -a L --position anywhere --set-cursor '%| less -r'
     abbr -a F --position anywhere --set-cursor '%| fzf'
 
-    # kitty kittens
+    # kittens
     abbr -a ki 'kitten icat'
     abbr -a kt 'kitten transfer'
     abbr -a kc 'kitten clipboard'
@@ -174,7 +174,7 @@ if status is-interactive
     abbr -a grac 'git add --all && git rebase --continue'
     abbr -a gbc --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
 
-    # php
+    # laravel
     abbr -a a 'php artisan'
     abbr -a aoc 'php artisan optimize:clear'
 
