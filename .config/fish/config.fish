@@ -89,7 +89,7 @@ if status is-interactive
 
     # nvm.fish
     set -gx nvm_default_version lts
-    set -gx nvm_default_packages yarn pnpm
+    set -gx nvm_default_packages pnpm
 
     # done
     set -gx __done_min_cmd_duration 10000
@@ -123,7 +123,7 @@ if status is-interactive
     abbr -a t 'touch'
     abbr -a m 'make'
     abbr -a j 'just'
-    abbr -a e 'exit'
+    abbr -a y 'yazi'
     abbr -a mv 'mv -v'
     abbr -a cp 'cp -v'
     abbr -a rm 'rm -rf -v'
