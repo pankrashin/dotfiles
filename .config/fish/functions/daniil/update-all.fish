@@ -1,25 +1,22 @@
-function update-all --description "Update all my stuff"
-
-    echo "=== App Store ==="
+function update-all
+    # app store apps
     mas update
     mas reset
 
-    echo "=== Homebrew ==="
+    # homebrew packages
     brew update
     brew upgrade --greedy -y
     brew autoremove
     brew cleanup --prune=all
 
-    echo "=== Fisher ==="
+    # fish plugins
     fisher update
 
-    echo "=== uv ==="
+    # uv tools
     uv tool upgrade --all
     uv cache clean
 
-    echo "=== npm ==="
+    # npm global packages
     npm update -g
     npm cache clean --force
-
-    echo "=== Done ==="
 end

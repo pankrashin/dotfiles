@@ -6,7 +6,11 @@ function fish_title
     # An override for the current command is passed as the first parameter.
     # This is used by `fg` to show the true process name, among others.
     if set -q argv[1]
-        echo -- $ssh (string sub -l 20 -- $argv[1]) (prompt_pwd -d 1 -D 1)
+        for token in (string split -n -- " " $argv[1] | path basename)
+            contains -- $token $fish_title_no_pwd
+            and echo -- $ssh (string sub -l 20 -- $argv[1])
+            and return
+        end
     else
         # Don't print "fish" because it's redundant
         set -l command (status current-command)

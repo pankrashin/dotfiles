@@ -1,17 +1,17 @@
-# function fish_greeting
-#     echo -n "It's "; set_color $fish_color_param; echo -n (date +%A); set_color normal; echo -n ", the time is "; set_color $fish_color_option; echo -n (date +%H:%M )
-#     set_color normal; echo ""; echo -n "You are on "; set_color $fish_color_command; echo -n $hostname
-#     echo ""
-#     echo ""
-# end
-
 function fish_greeting
-    echo -n "Welcome back, "; set_color $fish_color_cwd; echo -n $USER; set_color normal; echo -n "!";
-    echo ""
-    echo ""
-    echo -n "Today is "; set_color $fish_color_param; echo -n (date +%A); set_color normal; echo -n ", the time is "; set_color $fish_color_keyword; echo -n (date +%H:%M )
-    set_color normal; echo ""; echo -n "You are on "; set_color $fish_color_command; echo -n $hostname
+    if not set -q fish_greeting
+        set -l line1 (_ 'Welcome to fish, the friendly interactive shell')
+        set -l line2 \n(printf (_ 'Type %shelp%s for instructions on how to use fish') (set_color green) (set_color --reset))
+        set -g fish_greeting "$line1$line2"
+    end
 
-    echo ""
-    echo ""
+    if set -q fish_private_mode && set -q fish_greeting[1]
+        set -l line (_ "fish is running in private mode, history will not be persisted.")
+        set -g fish_greeting $fish_greeting\n$line
+    end
+
+    # The greeting used to be skipped when fish_greeting was empty (not just undefined)
+    # Keep it that way to not print superfluous newlines on old configuration
+    test -n "$fish_greeting"
+    and echo $fish_greeting
 end

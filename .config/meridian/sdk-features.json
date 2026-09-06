@@ -1,7 +1,13 @@
 {
   "pi": {
     "codeSystemPrompt": false,
-    "clientSystemPrompt": true,
+    "claudeMd": "full",
+    "thinking": "enabled",
+    "thinkingPassthrough": true,
+    "webFetchPreflight": false
+  },
+  "openai": {
+    "clientSystemPrompt": false,
     "thinking": "enabled",
     "thinkingPassthrough": true,
     "webFetchPreflight": false

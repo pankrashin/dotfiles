@@ -1,7 +1,0 @@
-color:
-  when: auto
-  theme: custom
-ignore-globs:
-  - .DS_Store
-sorting:
-  dir-grouping: first

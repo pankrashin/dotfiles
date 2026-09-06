@@ -1,4 +1,4 @@
-function ssh --description "Use kitty ssh kitten when running ssh in kitty terminal"
+function ssh
     if test "$TERM" = xterm-kitty
         kitten ssh $argv
     else
