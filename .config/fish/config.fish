@@ -120,6 +120,7 @@ if status is-interactive
     abbr -a nvimc 'nvim ~/.config/nvim/init.lua'
 
     # tools
+    abbr -a o 'open'
     abbr -a t 'touch'
     abbr -a m 'make'
     abbr -a j 'just'

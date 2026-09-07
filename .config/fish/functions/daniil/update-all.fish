@@ -19,4 +19,7 @@ function update-all
     # npm global packages
     npm update -g
     npm cache clean --force
+
+    # neovim plugins
+    nvim --headless "+lua vim.pack.update(nil, { force = true })" +qa
 end
