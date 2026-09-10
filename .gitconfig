@@ -22,3 +22,10 @@
     default = current
 [merge]
     conflictStyle = zdiff3
+[commit]
+    gpgsign = true
+[gpg]
+    program = /opt/homebrew/bin/gpg
+    format = ssh
+[gpg "ssh"]
+    allowedsignersfile = /Users/daniil/.ssh/allowed_signers

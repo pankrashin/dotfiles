@@ -80,7 +80,7 @@ if status is-interactive
 
     # fzf.fish keymaps
     fzf_configure_bindings \
-        --directory=super-f \
+        --directory=super-d \
         --git_log=super-l \
         --git_status=super-g \
         --history=super-i \
@@ -215,7 +215,7 @@ if status is-interactive
     abbr -a pis 'pi --session'
 
     # agentsview
-    abbr -a av 'open http://localhost:8080 &; agentsview serve'
+    abbr -a av 'agentsview serve &; open http://localhost:8080'
 
     # firecrawl
     set -gx FIRECRAWL_API_URL 'http://localhost:3002'

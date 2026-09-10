@@ -1,7 +1,7 @@
-vim.pack.add({'https://github.com/scottmckendry/cyberdream.nvim'})
+vim.pack.add { "https://github.com/scottmckendry/cyberdream.nvim" }
 
-require('cyberdream').setup({
-    transparent = true
-})
+require("cyberdream").setup {
+  transparent = true,
+}
 
-vim.cmd('colorscheme cyberdream')
+vim.cmd "colorscheme cyberdream"

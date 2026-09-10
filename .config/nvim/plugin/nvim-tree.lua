@@ -1,9 +1,19 @@
-vim.pack.add({
-    'https://github.com/nvim-tree/nvim-web-devicons',
-    'https://github.com/nvim-tree/nvim-tree.lua'
-})
+vim.pack.add {
+  "https://github.com/nvim-tree/nvim-web-devicons",
+  "https://github.com/nvim-tree/nvim-tree.lua",
+}
 
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+require("nvim-tree").setup {
+  update_focused_file = {
+    enable = true,
+  },
 
-require('nvim-tree').setup()
+  filters = {
+    git_ignored = false,
+    custom = { "^\\.DS_Store$" },
+  },
+}
+
+vim.keymap.set("n", "<D-e>", function()
+  require("nvim-tree.api").tree.toggle { focus = false }
+end, { silent = true })

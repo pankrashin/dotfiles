@@ -1,8 +1,13 @@
 vim.opt.title = true
 
 function GetCurrentIconFile()
+  local ok, devicons = pcall(require, "nvim-web-devicons")
+  if not ok then
+    return ""
+  end
   local filename = vim.fn.expand "%:t"
-  local icon = require("nvim-web-devicons").get_icon(filename)
+  local ext = vim.fn.expand "%:e"
+  local icon = devicons.get_icon(filename, ext, { default = true })
   return icon or ""
 end
 
@@ -13,23 +18,23 @@ function GetTabTitle()
   -- Check if current buffer is nvim-tree
   if filetype == "NvimTree" or bufname:match "NvimTree" then
     local cwd_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-    return " " .. cwd_name
+    return " " .. cwd_name
   end
 
   -- Check if current buffer is toggleterm
   if filetype == "toggleterm" then
     local cwd_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-
-    -- Access the buffer-local variable for the terminal ID
     local term_id = vim.b.toggle_number
-    return cwd_name .. "  Terminal " .. term_id
+    if term_id then
+      return cwd_name .. "  Terminal " .. term_id
+    end
+    return cwd_name .. "  Terminal"
   end
 
   -- Default: show parent folder, icon, and filename
   local parent = vim.fn.fnamemodify(vim.fn.expand "%:p:h", ":t")
   local icon = GetCurrentIconFile()
   local filename = vim.fn.expand "%:t"
-
   return parent .. " " .. icon .. " " .. filename
 end
 

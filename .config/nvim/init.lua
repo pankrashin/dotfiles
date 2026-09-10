@@ -1,8 +1,16 @@
+-- enable lua module loader
 vim.loader.enable()
 
-vim.opt.termguicolors = true
+-- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
--- disable swap files as this config autosaves everything
+-- use system clipboard
+vim.schedule(function()
+  vim.o.clipboard = "unnamedplus"
+end)
+
+-- disable swap files
 vim.opt.swapfile = false
 
 -- autosave files
@@ -10,28 +18,59 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "FocusLost", "BufLeave" }, {
   command = "silent! wa",
 })
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- enable 24-bit colour
+vim.opt.termguicolors = true
+
+-- show relative line numbers
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- scrolloff
+vim.opt.scrolloff = 8
+vim.opt.sidescrolloff = 8
+
+-- show invisible characters
+vim.opt.list = true
+vim.opt.listchars = { tab = "▸ ", space = "·" }
+
+-- line wrap
+vim.opt.wrap = false
+
+-- tab
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.expandtab = true
+
+-- enable smart indentation
+vim.opt.smartindent = true
+
+-- incremental search
+vim.opt.incsearch = true
+
+-- case-insensitive search
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- save undo history
+vim.opt.undofile = true
+
+-- enable mouse
+vim.opt.mouse = "a"
+vim.opt.mousemoveevent = true
+
+vim.opt.undofile = true
 
 vim.g.have_nerd_font = true
 
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.completeopt = "menuone,longest,preview"
 
-vim.o.mouse = 'a'
-
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
-
-vim.o.undofile = true
-
-vim.o.expandtab = true
-vim.o.shiftwidth = 4
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-
-vim.o.smartindent = true
-
-vim.o.wrap = false
-
-require 'title'
+require "title"
 require "keymaps"
