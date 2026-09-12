@@ -177,6 +177,7 @@ if status is-interactive
 
     # yadm
     abbr -a ys 'yadm status'
+    abbr -a yp 'yadm push'
     abbr -a yau 'yadm add -u'
     abbr -a ycd 'yadm commit -m $(date)'
 
