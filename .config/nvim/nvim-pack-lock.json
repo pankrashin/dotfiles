@@ -13,7 +13,7 @@
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "fff": {
-      "rev": "7f8537e70f0ea1210f9acbbfc4640141105cdc78",
+      "rev": "e208805e08550c363060d78a8a470ff86062f3d9",
       "src": "https://github.com/dmtrKovalenko/fff"
     },
     "gitsigns.nvim": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "b5576cd62899a1a478d0e67ef3d378ee55dba82d",
+      "rev": "77e06f7d2fc127e6ef0a720b59acbc50757cff19",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {

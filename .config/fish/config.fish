@@ -95,7 +95,7 @@ if status is-interactive
     set -gx __done_min_cmd_duration 10000
 
     # fish_title
-    set -gx fish_title_no_pwd man less caffeinate btop ctop lazydocker meridian
+    set -gx fish_title_no_pwd man less caffeinate btop ctop lazydocker mo meridian
 
     # cd
     abbr -a - 'cd -'
@@ -220,4 +220,7 @@ if status is-interactive
     # firecrawl
     set -gx FIRECRAWL_API_URL 'http://localhost:3002'
     set -gx FIRECRAWL_API_KEY 'firecrawl'
+
+    # zoxide
+    zoxide init fish | source
 end

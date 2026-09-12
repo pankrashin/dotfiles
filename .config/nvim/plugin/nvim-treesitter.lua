@@ -1,6 +1,6 @@
 vim.pack.add { "https://github.com/nvim-treesitter/nvim-treesitter" }
 
-require("nvim-treesitter").install { "lua", "php", "php_only", "phpdoc", "sql", "python" }
+require("nvim-treesitter").install { "lua", "php", "php_only", "phpdoc", "sql", "python", "swift" }
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "php" },
@@ -23,3 +23,9 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "swift" },
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
