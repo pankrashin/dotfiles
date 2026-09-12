@@ -1,4 +1,3 @@
-import subprocess
 from typing import Any, Dict
 from kitty.boss import Boss
 from kitty.fast_data_types import cocoa_hide_other_apps, os_window_focus_counters
@@ -7,15 +6,8 @@ from kitty.window import Window
 _handled: Dict[int, int] = {}
 
 
-def _hide_others() -> None:
-    cocoa_hide_other_apps()
-
-    # workaround for cmd+h to work
-    subprocess.Popen(["osascript", "-e", 'tell application "System Events" to set visible of application process "Finder" to true'])
-
-
 def on_load(boss: Boss, data: Dict[str, Any]) -> None:
-    _hide_others()
+    cocoa_hide_other_apps()
 
 
 def on_focus_change(boss: Boss, window: Window, data: Dict[str, Any]) -> None:
@@ -26,4 +18,4 @@ def on_focus_change(boss: Boss, window: Window, data: Dict[str, Any]) -> None:
     if _handled.get(os_window_id) == counter:
         return
     _handled[os_window_id] = counter
-    _hide_others()
+    cocoa_hide_other_apps()
