@@ -152,6 +152,12 @@ if status is-interactive
     abbr -a sshl 'ssh-add -L'
     abbr -a ssha --set-cursor 'ssh-add --apple-use-keychain ~/.ssh/keys/%'
 
+    # scp
+    abbr -a scpuf --set-cursor 'scp % user@server:/path/on/remote/'
+    abbr -a scpud --set-cursor 'scp -r % user@server:/path/on/remote/'
+    abbr -a scpdf --set-cursor 'scp user@server:% /path/on/local/'
+    abbr -a scpdd --set-cursor 'scp -r user@server:% /path/on/local/'
+
     # eza
     alias ls='eza -1 -F=auto -s=extension -I=.DS_Store --group-directories-first --color=auto --icons=auto'
     alias la='eza -a1 -F=auto -s=extension -I=.DS_Store --group-directories-first --color=auto --icons=auto'
