@@ -175,6 +175,11 @@ if status is-interactive
     abbr -a grac 'git add --all && git rebase --continue'
     abbr -a gbc --position anywhere --set-cursor 'git branch --contains % | xargs git checkout'
 
+    # yadm
+    abbr -a ys 'yadm status'
+    abbr -a yau 'yadm add -u'
+    abbr -a ycd 'yadm commit -m $(date)'
+
     # laravel
     abbr -a a 'php artisan'
     abbr -a aoc 'php artisan optimize:clear'
